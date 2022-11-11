@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
@@ -9,7 +10,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const { MongoClient, ServerApiVersion, CURSOR_FLAGS } = require('mongodb');
-const uri = "mongodb+srv://aditya:password6900@cluster0.g0n5y.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URL;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 const db = client.db("mso")
